@@ -1,4 +1,4 @@
-
+import java.util.*;
 public class FindAllGene {
 	public int findStopCodon(String dnaStr,int startIndex,String stopCodon)
 	{
@@ -57,8 +57,9 @@ public class FindAllGene {
 		}
 	}
 	
-	public void printAllGene(String dna)
+	public  ArrayList<String> getAllGene(String dna)
 	{
+		ArrayList<String> geneList = new ArrayList<String>();
 		int startIndex = 0;
 		while(true)
 		{
@@ -67,15 +68,20 @@ public class FindAllGene {
 			{
 				break;
 			}
-			System.out.println(currentGene);
+			geneList.add(currentGene);
 			startIndex = dna.indexOf(currentGene,startIndex)+currentGene.length();
 		}
+		return geneList;
 	}
 	
 	public void testOn(String dna)
 	{
 		System.out.println("Testing printall Gene " +dna);
-		printAllGene(dna);
+		ArrayList<String> genes = getAllGene(dna);
+		for(String g : genes)
+		{
+			System.out.println(g);
+		}
 	}
 	
 	public void test()
